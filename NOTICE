@@ -1,0 +1,14 @@
+IKATS
+Copyright 2017-2018 CS Systèmes d'Information
+
+This product includes software developed by
+CS Systèmes d'Information (http://www.c-s.fr/)
+
+Third party components :
+------------------------
+
+* Apache Spark(TM) - Licensed under the Apache License, Version 2.0
+  https://spark.apache.org/
+
+* OpenTSDB - OpenTSDB is free software and is available under both LGPLv2.1+ and GPLv3+.
+  http://opentsdb.net/
