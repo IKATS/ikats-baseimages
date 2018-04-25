@@ -22,7 +22,6 @@ RUN apt-get update \
    libpq-dev \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && easy_install3 pip py4j \
- && pip install --upgrade pip \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
