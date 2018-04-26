@@ -15,6 +15,7 @@ pipeline {
                 anyOf {
                     branch "develop/*"
                     branch "feature/*"
+                    branch "bugfix/*"
                 }
             }
 
@@ -34,9 +35,9 @@ pipeline {
 
                                 // 'DOCKER_REGISTRY' stands for internal registry creds
                                 docker.withRegistry("${params.INTERNAL_REGISTRY_URL}", 'DOCKER_REGISTRY') {
-                                /* Push the container to the custom Registry */
-                                moduleImage.push(branchName + "_" + shortCommit)
-                                moduleImage.push(branchName + "_latest")
+                                    /* Push the container to the custom Registry */
+                                    moduleImage.push(branchName + "_" + shortCommit)
+                                    moduleImage.push(branchName + "_latest")
                                     if (branchName == "master") {
                                         moduleImage.push("latest")
                                     }
@@ -61,9 +62,9 @@ pipeline {
 
                                 // 'DOCKER_REGISTRY' stands for internal registry creds
                                 docker.withRegistry("${params.INTERNAL_REGISTRY_URL}", 'DOCKER_REGISTRY') {
-                                /* Push the container to the custom Registry */
-                                moduleImage.push(branchName + "_" + shortCommit)
-                                moduleImage.push(branchName + "_latest")
+                                    /* Push the container to the custom Registry */
+                                    moduleImage.push(branchName + "_" + shortCommit)
+                                    moduleImage.push(branchName + "_latest")
                                     if (branchName == "master") {
                                         moduleImage.push("latest")
                                     }
