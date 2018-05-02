@@ -26,7 +26,7 @@ pipeline {
                         dir ('ikats-spark') {
                             script {
                                 module = 'ikats-spark'
-                                moduleImage = docker.build(module)
+                                moduleImage = docker.build(module, "--pull .")
 
                                 // Prepare image tag
                                 fullBranchName = "${env.BRANCH_NAME}"
@@ -53,7 +53,7 @@ pipeline {
                         dir ('opentsdb') {
                             script {
                                 module = 'opentsdb'
-                                moduleImage = docker.build(module)
+                                moduleImage = docker.build(module, "--pull .")
 
                                 // Prepare image tag
                                 fullBranchName = "${env.BRANCH_NAME}"
