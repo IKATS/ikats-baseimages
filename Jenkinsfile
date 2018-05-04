@@ -25,7 +25,11 @@ pipeline {
                     steps {
                         dir ('ikats-spark') {
                             script {
-                                module = 'ikats-spark'
+
+                                // Replacing docker registry to private one
+                                sh "sed -i 's/FROM ikats/FROM hub.ops.ikats.org/' Dockerfile"
+
+                                module = 'spark'
                                 moduleImage = docker.build(module, "--pull .")
 
                                 // Prepare image tag
@@ -39,7 +43,7 @@ pipeline {
                                     moduleImage.push(branchName + "_" + shortCommit)
                                     moduleImage.push(branchName + "_latest")
                                     if (branchName == "master") {
-                                        moduleImage.push("latest")
+                                        moduleImage.push("master")
                                     }
                                 }
                             }
@@ -52,6 +56,10 @@ pipeline {
                     steps {
                         dir ('opentsdb') {
                             script {
+
+                                // Replacing docker registry to private one
+                                sh "sed -i 's/FROM ikats/FROM hub.ops.ikats.org/' Dockerfile"
+
                                 module = 'opentsdb'
                                 moduleImage = docker.build(module, "--pull .")
 
@@ -66,7 +74,7 @@ pipeline {
                                     moduleImage.push(branchName + "_" + shortCommit)
                                     moduleImage.push(branchName + "_latest")
                                     if (branchName == "master") {
-                                        moduleImage.push("latest")
+                                        moduleImage.push("master")
                                     }
                                 }
                             }
