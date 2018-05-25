@@ -1,5 +1,10 @@
 FROM ubuntu:xenial
 
+LABEL license="Apache License, Version 2.0"
+LABEL copyright="CS Systèmes d'Information"
+LABEL maintainer="contact@ikats.org"
+LABEL version="0.7.39"
+
 # Note, we use spark 1.6.1 as it is the version that was present on the
 # codebase, but there is avaliable release for all the other versions.
 # (Including those >= 2.X)

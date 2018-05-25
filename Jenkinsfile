@@ -25,8 +25,12 @@ pipeline {
                     steps {
                         dir ('ikats-spark') {
                             script {
-                                module = 'ikats-spark'
-                                moduleImage = docker.build(module)
+
+                                // Replacing docker registry to private one. See [#172302]
+                                sh "sed -i 's/FROM ikats/FROM hub.ops.ikats.org/' Dockerfile"
+
+                                module = 'spark'
+                                moduleImage = docker.build(module, "--pull .")
 
                                 // Prepare image tag
                                 fullBranchName = "${env.BRANCH_NAME}"
@@ -39,7 +43,7 @@ pipeline {
                                     moduleImage.push(branchName + "_" + shortCommit)
                                     moduleImage.push(branchName + "_latest")
                                     if (branchName == "master") {
-                                        moduleImage.push("latest")
+                                        moduleImage.push("master")
                                     }
                                 }
                             }
@@ -52,8 +56,12 @@ pipeline {
                     steps {
                         dir ('opentsdb') {
                             script {
+
+                                // Replacing docker registry to private one. See [#172302]
+                                sh "sed -i 's/FROM ikats/FROM hub.ops.ikats.org/' Dockerfile"
+
                                 module = 'opentsdb'
-                                moduleImage = docker.build(module)
+                                moduleImage = docker.build(module, "--pull .")
 
                                 // Prepare image tag
                                 fullBranchName = "${env.BRANCH_NAME}"
@@ -66,7 +74,7 @@ pipeline {
                                     moduleImage.push(branchName + "_" + shortCommit)
                                     moduleImage.push(branchName + "_latest")
                                     if (branchName == "master") {
-                                        moduleImage.push("latest")
+                                        moduleImage.push("master")
                                     }
                                 }
                             }
