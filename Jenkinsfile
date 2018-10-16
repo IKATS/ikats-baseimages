@@ -13,7 +13,8 @@ pipeline {
         stage('Build and push images') {
             when {
                 anyOf {
-                    branch "develop/*"
+                    branch "develop"
+                    branch "master"
                     branch "feature/*"
                     branch "bugfix/*"
                 }
