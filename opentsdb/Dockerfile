@@ -1,4 +1,4 @@
-FROM cloudflare/opentsdb:2.3.0
+FROM cloudflare/opentsdb:2.3.1
 
 LABEL license="Apache License, Version 2.0"
 LABEL copyright="CS Systèmes d'Information"
