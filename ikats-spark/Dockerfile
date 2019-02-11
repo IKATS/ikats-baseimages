@@ -26,7 +26,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ENV SPARK_VERSION=2.3.1
+ENV SPARK_VERSION=2.3.2
 ENV HADOOP_VERSION=2.6
 ENV SPARK_HOME /opt/spark
 
