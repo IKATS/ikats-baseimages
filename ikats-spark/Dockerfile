@@ -3,7 +3,7 @@ FROM ubuntu:xenial
 LABEL license="Apache License, Version 2.0"
 LABEL copyright="CS Systèmes d'Information"
 LABEL maintainer="contact@ikats.org"
-LABEL version="0.7.41"
+LABEL version="0.7.42"
 
 # Install python3
 RUN apt-get update \
@@ -26,7 +26,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ENV SPARK_VERSION=2.3.1
+ENV SPARK_VERSION=2.3.2
 ENV HADOOP_VERSION=2.6
 ENV SPARK_HOME /opt/spark
 
